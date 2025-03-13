@@ -13,7 +13,12 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // For parsing JSON data
-app.use(cors()); // Allow cross-origin requests
+// app.use(cors()); // Allow cross-origin requests
+app.use(cors({
+  origin: 'https://manohara91.github.io', // Allow GitHub Pages frontend
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
+}));
 
 // Connect to MongoDB
 connectDB();
